@@ -25,11 +25,6 @@ variable "region" {
   type        = string
 
 }
-
-
-
-
-
 variable "EKS-CLUSTER-NAME" {
   type        = string
   description = "Eks cluster name"

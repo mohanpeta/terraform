@@ -22,3 +22,20 @@ terraform {
 }
 
 
+module "vpc" {
+  source = "./modules/vpc"
+
+  vpc_cidr = var.vpc_cidr
+  public_subnet_cidr = var.public_subnet_cidr
+  private_subnet_cidr = var.private_subnet_cidr
+  availability_zones = var.availability_zones 
+}
+
+module "eks" {
+  source = "./modules/EKS"
+
+  EKS-CLUSTER-NAME = var.EKS-CLUSTER-NAME
+  subnet_id = var.subnet.id
+  EKS-Cluster-Version = var.EKS-CLUSTER-NAME
+  node_group = var.node_group
+}
