@@ -1,3 +1,11 @@
+variable "region" {
+    type = string
+    description = "aws region"
+    default = "ap-south-1"
+  
+}
+
+
 variable "EKS-CLUSTER-NAME" {
   type        = string
   description = "Eks cluster name"

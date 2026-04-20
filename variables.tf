@@ -52,7 +52,3 @@ variable "node_group" {
   }))
 }
 
-
-
-
-

@@ -24,7 +24,7 @@ terraform {
 
 module "vpc" {
   source = "./modules/vpc"
-
+  region = var.region
   vpc_cidr = var.vpc_cidr
   public_subnet_cidr = var.public_subnet_cidr
   private_subnet_cidr = var.private_subnet_cidr
@@ -38,4 +38,5 @@ module "eks" {
   subnet_id = var.subnet.id
   EKS-Cluster-Version = var.EKS-CLUSTER-NAME
   node_group = var.node_group
+  region = var.region
 }
