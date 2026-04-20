@@ -11,6 +11,14 @@ provider "aws" {
   region = "ap-south-1"
 }
 
+resource "aws_s3_bucket" "terraform-state" {
+  bucket = "practice-eks-terraform1010"
+  lifecycle {
+    prevent_destroy = false
+  }
+}
+
+
 terraform {
   backend "s3" {
     bucket       = "practice-eks-terraform1010"
