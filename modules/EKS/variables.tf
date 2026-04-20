@@ -1,10 +1,13 @@
 variable "region" {
     type = string
     description = "aws region"
-    default = "ap-south-1"
-  
+    default = "ap-south-1" 
 }
 
+variable "vpc_id" {
+  description = "My VPC ID for EKS cluster"
+  type        = string
+}
 
 variable "EKS-CLUSTER-NAME" {
   type        = string

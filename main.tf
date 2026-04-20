@@ -35,8 +35,9 @@ module "eks" {
   source = "./modules/EKS"
 
   EKS-CLUSTER-NAME = var.EKS-CLUSTER-NAME
-  subnet_id = var.subnet.id
-  EKS-Cluster-Version = var.EKS-CLUSTER-NAME
+  subnet_id = module.vpc.private_subnet_id
+  EKS-Cluster-Version = var.EKS-Cluster-Version
   node_group = var.node_group
   region = var.region
+  vpc_id = module.vpc.vpc_id
 }
