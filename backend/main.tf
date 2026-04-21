@@ -18,14 +18,13 @@ resource "aws_s3_bucket" "terraform-state" {
   }
 }
 
-terraform {
-  backend "s3" {
-    bucket       = "practice-eks-terraform1010"
-    key          =  "dev/terraform-state-file"           # path/to/state
-    use_lockfile = true
-    region       = "ap-south-1"
-    encrypt      =  true
-  }
-}
-
+#terraform {
+#  backend "s3" {
+#    bucket       = "practice-eks-terraform1010"
+#    key          =  "dev/terraform-state-file"           # path/to/state
+#    use_lockfile = true
+#    region       = "ap-south-1"
+#    encrypt      =  true
+#  }
+#}
 
