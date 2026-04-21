@@ -20,7 +20,7 @@ resource "aws_iam_role" "eks-cluster-role" {
 
 resource "aws_iam_role_policy_attachment" "cluster_AmazonEKSClusterPolicy" {
   policy_arn = "arn:aws:iam::aws:policy/AmazonEKSClusterPolicy"
-  role       = aws_iam_role.eks-cluster-role
+  role       = aws_iam_role.eks-cluster-role.name
 }
 
 
@@ -78,13 +78,13 @@ resource "aws_iam_role_policy_attachment" "node_policies" {
 resource "aws_eks_node_group" "eks_worker_node" {
   for_each = var.node_group
 
-  cluster_name    = aws_eks_cluster.main-EKS-CLUSTER
+  cluster_name    = aws_eks_cluster.main-EKS-CLUSTER.name
   node_group_name = each.key
   node_role_arn   = aws_iam_role.eks_node_role.arn
   subnet_ids      = var.subnet_id
 
   instance_types = each.value.instance_types
-  disk_size = each.value.capacity_type
+ # disk_size = each.value.disk_size
 
   scaling_config {
     desired_size = each.value.scaling_config.desired_size
@@ -96,4 +96,3 @@ resource "aws_eks_node_group" "eks_worker_node" {
     aws_iam_role_policy_attachment.node_policies
   ]
 }
-
