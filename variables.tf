@@ -43,12 +43,11 @@ variable "node_group" {
 
   type = map(object({
     instance_types = list(string)
-    capacity_type = string
+    capacity_type  = string
     scaling_config = object({
       desired_size = number
-      max_size = number
-      min_size = number
-    }) 
+      max_size     = number
+      min_size     = number
+    })
   }))
 }
-
