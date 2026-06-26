@@ -1,28 +1,25 @@
-variable "region" {
-    type = string
-    description = "aws region"
-}
-
-
 variable "vpc_cidr" {
-  type        = string
-  description = "vpc cidr block"
+  type = string
 }
 
-variable "public_subnet_cidr" {
-  type        = list(string)
-  description = " public subnet cidr block"
-}
-
-
-variable "private_subnet_cidr" {
-  type        = list(string)
-  description = " public subnet cidr block"
+variable "environment" {
+  type = string
 }
 
 variable "availability_zones" {
-  type        = list(string)
-  description = " public subnet cidr block"
+  type = list(string)
 }
 
+variable "public_subnets" {
+  type = list(string)
+}
+
+variable "private_subnets" {
+  type = list(string)
+}
+
+variable "enable_flow_logs" {
+  type    = bool
+  default = true
+}
 
