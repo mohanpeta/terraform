@@ -1,45 +1,65 @@
-variable "region" {
-    type = string
-    description = "aws region"
-    default = "ap-south-1" 
+variable "environment" {
+  type = string
 }
 
-variable "vpc_id" {
-  description = "My VPC ID for EKS cluster"
-  type        = string
+variable "cluster_role_arn" {
+  type = string
 }
 
-variable "EKS-CLUSTER-NAME" {
-  type        = string
-  description = "Eks cluster name"
+variable "node_role_arn" {
+  type = string
 }
 
-
-
-variable "EKS-Cluster-Version" {
-  type        = string
-  description = "Eks cluster Version"
+variable "kms_key_arn" {
+  type = string
 }
 
-variable "subnet_id" {
-  type        = list(string)
-  description = "VPC Subnet ids"
+variable "private_subnet_ids" {
+  type = list(string)
 }
 
-variable "node_group" {
-  description = "EKS Node group configuration variables"
+variable "cluster_security_group_id" {
+  type = string
+}
+
+variable "node_security_group_id" {
+  type = string
+}
+
+variable "clusters" {
+  description = "Map of EKS clusters"
 
   type = map(object({
-    instance_types = list(string)
-    capacity_type = string
-   # disk_size = number
-    scaling_config = object({
+
+    version = string
+
+    endpoint_private_access = bool
+
+    endpoint_public_access = bool
+
+    enabled_log_types = list(string)
+
+    node_groups = map(object({
+
+      instance_types = list(string)
+
+      capacity_type = string
+
       desired_size = number
-      max_size = number
+
       min_size = number
-    }) 
+
+      max_size = number
+
+      disk_size = number
+
+    }))
+
   }))
 }
 
-
+variable "tags" {
+  type    = map(string)
+  default = {}
+}
 
