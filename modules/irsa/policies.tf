@@ -20,3 +20,20 @@ locals {
   ])
 
 }
+
+
+resource "aws_iam_role_policy_attachment" "this" {
+
+  for_each = {
+
+    for item in local.policy_attachments :
+
+    item.key => item
+
+  }
+
+  role       = aws_iam_role.this[each.value.role_name].name
+
+  policy_arn = each.value.policy_arn
+
+}
