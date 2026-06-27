@@ -11,3 +11,10 @@ output "irsa_role_names" {
     k => v.name
   }
 }
+
+
+output "service_account_bindings" {
+
+  value = local.service_accounts
+
+}
