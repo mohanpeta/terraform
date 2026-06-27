@@ -18,8 +18,3 @@ locals {
 
 }
 
-output "service_account_bindings" {
-
-  value = local.service_accounts
-
-}
